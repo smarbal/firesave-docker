@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
- mysqldb:
+ mysql:
+   
    image: mysql:5.7
    restart: unless-stopped
    env_file: ./.env
@@ -12,9 +13,9 @@ services:
      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
    volumes:
      - db:/var/lib/mysql
+
  backend:
-   depends_on:
-     - mysqldb
+   
    build: ./firesave-api
    restart: unless-stopped
    env_file: ./.env
@@ -22,7 +23,7 @@ services:
      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
      - 4444:4444
    environment:
-     - DB_HOST=mysqldb
+     - DB_HOST=mysql
      - DB_USER=$MYSQLDB_USER
      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
      - DB_NAME=$MYSQLDB_DATABASE
@@ -37,3 +38,4 @@ services:
 
 volumes: 
  db:
+
