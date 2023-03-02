@@ -8,7 +8,7 @@ module.exports = (io, socket) => {
       if(i>3){
         console.log("alert")
         socket.emit('alert') // to all connected clients. https://socket.io/fr/docs/v3/emit-cheatsheet/
-        alert = true
+        global.alert = true
         console.log(alert)
       };
     //   setTimeout(function() {

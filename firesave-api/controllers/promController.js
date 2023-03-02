@@ -4,8 +4,8 @@ const User = db.User;
 
 
 exports.promList = async function (req, res) {
-    console.log("alert", alert)
-    if(!alert){         // Check if in alert mode and 
+    console.log("alert", global.alert)
+    if(!global.alert){         // Check if in alert mode and 
         attributes = ["firstname", "lastname", "service_number", "room"]
     }
     else attributes = ["firstname", "lastname", "service_number", "room", 'inside']
