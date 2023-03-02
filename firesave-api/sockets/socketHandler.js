@@ -1,6 +1,6 @@
 let i = 0 
 
-global.alert = true; // Global because it needs to be shared with all the files. Necessary so that user presence is only fetchable in alert mode, for confidentiality reasons. 
+global.alert = false; // Global because it needs to be shared with all the files. Necessary so that user presence is only fetchable in alert mode, for confidentiality reasons. 
 
 module.exports = (io, socket) => {
     const alertUsers = (payload) => {
