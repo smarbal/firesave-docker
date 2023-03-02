@@ -63,14 +63,14 @@ exports.promDelete = async function (req, res) {
 }
 
 exports.promFindOne = async function (req, res) {
+    console.log("alert", global.alert)
     if (req.params.prom_name) {
-        if(!alert){         // Check if in alert mode and 
+        if(!global.alert){         // Check if in alert mode and 
             attributes = ["firstname", "lastname", "service_number", "room"]
         }
         else attributes = ["firstname", "lastname", "service_number", "room", 'inside']
         await Prom.findOne({include: [{model: User, attributes: attributes}, { model: User, as: 'manager' }], where: { prom_name: req.params.prom_name } })
             .then(data => {
-                console.log(data)
                 res.json(data);
             })
             .catch(err => {
