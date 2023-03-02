@@ -6,10 +6,11 @@ module.exports = (io, socket) => {
     const alertUsers = (payload) => {
       i+=1
       if(i>3){
-        console.log("alert")
-        socket.emit('alert') // to all connected clients. https://socket.io/fr/docs/v3/emit-cheatsheet/
-        global.alert = true
-        console.log(alert)
+        console.log("alert");
+        global.alert = true;
+        console.log(alert);
+        socket.emit('alert'); // to all connected clients. https://socket.io/fr/docs/v3/emit-cheatsheet/
+
       };
     //   setTimeout(function() {
     //     i = 0;
