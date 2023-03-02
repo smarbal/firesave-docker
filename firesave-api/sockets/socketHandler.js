@@ -13,7 +13,8 @@ module.exports = (io, socket) => {
       setTimeout(function() {
         i = 0;
         alert = false
-    }, 600 * 1000);
+        console.log(alert)
+    }, 900 * 1000);
 
         
     }
