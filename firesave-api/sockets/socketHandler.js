@@ -9,12 +9,13 @@ module.exports = (io, socket) => {
         console.log("alert")
         socket.emit('alert') // to all connected clients. https://socket.io/fr/docs/v3/emit-cheatsheet/
         alert = true
-      }
-      setTimeout(function() {
-        i = 0;
-        alert = false
         console.log(alert)
-    }, 900 * 1000);
+      };
+    //   setTimeout(function() {
+    //     i = 0;
+    //     alert = false
+    //     console.log(alert)
+    // }, 900 * 1000);
 
         
     }
