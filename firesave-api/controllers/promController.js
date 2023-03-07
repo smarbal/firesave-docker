@@ -84,7 +84,7 @@ exports.promFindOne = async function (req, res) {
 exports.promAddUser = async function (req, res) {
     if (req.params.prom_name) {
         const prom = await Prom.findOne({ where: { prom_name: req.params.prom_name } })
-        const user = await User.findOne({include: [Prom]},{ where: { service_number: req.body.service_number } })
+        const user = await User.findOne({ where: { service_number: req.body.service_number } })
         prom.addUser(user)
         .then(data => {
             res.json(data);
