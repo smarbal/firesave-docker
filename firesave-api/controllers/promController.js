@@ -4,7 +4,6 @@ const User = db.User;
 
 
 exports.promList = async function (req, res) {
-    console.log("alert", global.alert)
     if(!global.alert){         // Check if in alert mode and 
         attributes = ["firstname", "lastname", "service_number", "room"]
     }
@@ -23,7 +22,6 @@ exports.promCreate = async (req, res) => {
     let prom = Prom.build({ prom_name: req.body.prom_name, battalion: req.body.battalion})
     await prom.save()
         .then(data => {
-            console.log(prom.toJSON());
             res.json(data);
         })
         .catch(err => {
@@ -63,7 +61,6 @@ exports.promDelete = async function (req, res) {
 }
 
 exports.promFindOne = async function (req, res) {
-    console.log("alert", global.alert)
     if (req.params.prom_name) {
         if(!global.alert){         // Check if in alert mode and 
             attributes = ["firstname", "lastname", "service_number", "room"]
@@ -97,10 +94,8 @@ exports.promAddUser = async function (req, res) {
 }
 exports.promRemoveUser = async function (req, res) {
     if (req.params.prom_name) {
-        console.log(req.body.service_number)
         const prom = await Prom.findOne({ where: { prom_name: req.params.prom_name } })
         const user = await User.findOne({ where: { service_number: req.body.service_number } })
-        console.log(user)
         prom.removeUser(user)
         .then(data => {
             res.json(data);

@@ -5,7 +5,6 @@ const User = db.User;
 exports.userList = async function (req, res) {
     await User.findAll()
         .then(data => {
-            console.log("All users:", JSON.stringify(data, null, 2));
             res.json(data);
         })
         .catch(err => {
@@ -17,7 +16,6 @@ exports.userCreate = async function (req, res) {
     let hash = bcrypt.hashSync(req.body.password, 5)
     let user = User.create({ service_number: req.body.service_number, lastname: req.body.lastname, firstname: req.body.firstname,username: req.body.username , prom_name: req.body.prom_name, room: req.body.room, password: hash})
         .then(data => {
-            console.log(data);
             res.json(data);
         })
         .catch(err => {
